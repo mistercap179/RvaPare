@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentskaSluzbaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ispit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vreme" Type="date" Nullable="false" />
+    <Property Name="idPredmet" Type="int" Nullable="false" />
+    <Property Name="idStudent" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Predmet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="katedra" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="profesor" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="smer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="brojIndexa" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Ispit_Predmet">
+    <End Role="Predmet" Type="Self.Predmet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ispit" Type="Self.Ispit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Predmet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ispit">
+        <PropertyRef Name="idPredmet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ispit_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ispit" Type="Self.Ispit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ispit">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentskaSluzbaModelStoreContainer">
+    <EntitySet Name="Ispit" EntityType="Self.Ispit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Predmet" EntityType="Self.Predmet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ispit_Predmet" Association="Self.FK_Ispit_Predmet">
+      <End Role="Predmet" EntitySet="Predmet" />
+      <End Role="Ispit" EntitySet="Ispit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ispit_Student" Association="Self.FK_Ispit_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Ispit" EntitySet="Ispit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

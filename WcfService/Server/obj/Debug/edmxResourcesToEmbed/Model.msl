@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudentskaSluzbaModelStoreContainer" CdmEntityContainer="StudentskaSluzbaEntities">
+    <EntitySetMapping Name="Ispits">
+      <EntityTypeMapping TypeName="StudentskaSluzbaModel.Ispit">
+        <MappingFragment StoreEntitySet="Ispit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="vreme" ColumnName="vreme" />
+          <ScalarProperty Name="idPredmet" ColumnName="idPredmet" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predmets">
+      <EntityTypeMapping TypeName="StudentskaSluzbaModel.Predmet">
+        <MappingFragment StoreEntitySet="Predmet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naziv" ColumnName="naziv" />
+          <ScalarProperty Name="katedra" ColumnName="katedra" />
+          <ScalarProperty Name="profesor" ColumnName="profesor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="StudentskaSluzbaModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="smer" ColumnName="smer" />
+          <ScalarProperty Name="brojIndexa" ColumnName="brojIndexa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

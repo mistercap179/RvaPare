@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp.Views.ModifyPredmetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.Views"
+        mc:Ignorable="d"
+        Title="ModifyPredmetView" Height="310.935" Width="280.623">
+    <Grid Margin="0,0,0,0.4" HorizontalAlignment="Left" Width="291">
+        <Label Content="Naziv" HorizontalAlignment="Left" Height="37" Margin="40,26,0,0" VerticalAlignment="Top" Width="114"/>
+        <TextBox Text="{Binding Naziv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="21" Margin="130,30,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="104"/>
+        <Label Content="Katedra" HorizontalAlignment="Left" Height="36" Margin="39,84,0,0" VerticalAlignment="Top" Width="73"/>
+        <TextBox Text="{Binding Katedra, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="21" Margin="130,87,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="104"/>
+        <Label Content="Profesor" HorizontalAlignment="Left" Height="31" Margin="39,143,0,0" VerticalAlignment="Top" Width="66"/>
+        <TextBox Text="{Binding Profesor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="21" Margin="130,147,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="104"/>
+        <Button  Command="{Binding ModifyCommand}" Content="Izmeni" HorizontalAlignment="Left" Height="37" Margin="86,217,0,0" VerticalAlignment="Top" Width="118"/>
+    </Grid>
+</Window>
