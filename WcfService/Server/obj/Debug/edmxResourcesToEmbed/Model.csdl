@@ -8,6 +8,7 @@
     <Property Name="vreme" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="idPredmet" Type="Int32" Nullable="false" />
     <Property Name="idStudent" Type="Int32" Nullable="false" />
+    <Property Name="polozen" Type="Int16" Nullable="false" />
     <NavigationProperty Name="Predmet" Relationship="Self.FK_Ispit_Predmet" FromRole="Ispit" ToRole="Predmet" />
     <NavigationProperty Name="Student" Relationship="Self.FK_Ispit_Student" FromRole="Ispit" ToRole="Student" />
   </EntityType>

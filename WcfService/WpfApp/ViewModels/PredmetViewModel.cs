@@ -47,6 +47,8 @@ namespace WpfApp.ViewModels
         public ICommand ModifyCommand { get; set; }
         public ICommand SearchCommand { get; set; }
         public ICommand CancelCommand { get; set; }
+        public ICommand RefreshCommand { get; set; }
+        
 
         public PredmetViewModel(IService service)
         {
@@ -56,9 +58,11 @@ namespace WpfApp.ViewModels
             DeleteCommand = new RelayCommand<object>(DeletePredmet);
             ModifyCommand = new RelayCommand<object>(ModifyPredmet);
             SearchCommand = new RelayCommand(SearchPredmet);
-            CancelCommand = new RelayCommand(CancelSearch); 
+            CancelCommand = new RelayCommand(CancelSearch);
+            RefreshCommand = new RelayCommand(Refresh);
             ListBox = new ObservableCollection<string> { "naziv", "katedra", "profesor"};
-            Predmeti = new ObservableCollection<Models.Predmet>(service.getPredmeti());
+            Predmeti = new ObservableCollection<Models.Predmet>();
+            initialization();
         }
 
         private void AddPredmet()
@@ -157,6 +161,36 @@ namespace WpfApp.ViewModels
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void Refresh()
+        {
+            Predmeti.Clear();
+            try
+            {
+                this.service.getPredmeti().ForEach(item => Predmeti.Add(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        public void initialization()
+        {
+            var predmetList = this.service.getPredmeti();
+
+            if (predmetList.Count == 0)
+            {
+                // Set default value for students
+                this.service.insertPredmet(new Models.Predmet { Katedra = "X", Naziv = "X", Profesor = "X" });
+                Predmeti.Add(new Models.Predmet { Katedra = "X", Naziv = "X", Profesor = "X" });
+            }
+            else
+            {
+                predmetList.ForEach(item => Predmeti.Add(item));
+            }
         }
 
     }

@@ -8,6 +8,7 @@
     <Property Name="vreme" Type="date" Nullable="false" />
     <Property Name="idPredmet" Type="int" Nullable="false" />
     <Property Name="idStudent" Type="int" Nullable="false" />
+    <Property Name="polozen" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Predmet">
     <Key>

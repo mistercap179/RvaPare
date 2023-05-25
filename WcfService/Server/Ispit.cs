@@ -18,6 +18,7 @@ namespace Server
         public System.DateTime vreme { get; set; }
         public int idPredmet { get; set; }
         public int idStudent { get; set; }
+        public short polozen { get; set; }
     
         public virtual Predmet Predmet { get; set; }
         public virtual Student Student { get; set; }

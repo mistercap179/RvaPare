@@ -11,7 +11,7 @@
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="32*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="tabelaPredmet" ItemsSource="{Binding Predmeti}"  AutoGenerateColumns="False" SelectionMode="Single" Margin="61,77,13.8,71.8" Grid.ColumnSpan="2" >
+        <DataGrid x:Name="tabelaPredmet" ItemsSource="{Binding Predmeti}"  AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" Margin="61,77,13.8,71.8" Grid.ColumnSpan="2" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" IsReadOnly="True">
                     <DataGridTextColumn.ElementStyle>
@@ -60,7 +60,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="AddPredmet" Command="{Binding AddCommand}" Content="Dodaj predmet" Margin="144,288,85.8,0" Height="31" VerticalAlignment="Top" RenderTransformOrigin="0.503,-0.281" Grid.ColumnSpan="2"/>
+        <Button Name="Refresh" Command="{Binding RefreshCommand}" Content="Refresh" Margin="219,289,10.8,0" Height="31" VerticalAlignment="Top" RenderTransformOrigin="0.503,-0.281" Grid.ColumnSpan="2"/>
+        <Button Name="AddPredmet" Command="{Binding AddCommand}" Content="Dodaj predmet" Margin="67,289,66.8,0" Height="31" VerticalAlignment="Top" RenderTransformOrigin="0.503,-0.281"/>
         <Label Content="Pretraga " HorizontalAlignment="Left" Margin="31,0,0,0" VerticalAlignment="Top" Height="40" Width="80"/>
         <TextBox Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="168,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Grid.ColumnSpan="2" RenderTransformOrigin="0.587,1.281"/>
         <Button Content="Search" Command="{Binding SearchCommand}" Height="24" Margin="74.2,8,-23.2,0" VerticalAlignment="Top" Grid.Column="1" RenderTransformOrigin="0.664,0.855" />

@@ -8,10 +8,10 @@
         Title="MainView" Height="450" Width="410.265">
     <Grid Margin="0,0,2.2,-0.6">
         <TabControl HorizontalAlignment="Left" Margin="7,7,0,15.6" Width="391">
-            <TabItem Header="Tab 1">
+            <TabItem Header="Tab Student">
                 <local:StudentWindow DataContext="{Binding StudentViewModel}" />
             </TabItem>
-            <TabItem Header="Tab 2">
+            <TabItem Header="Tab Predmet">
                 <local:PredmetWindow DataContext="{Binding PredmetViewModel}" />
             </TabItem>
         </TabControl>

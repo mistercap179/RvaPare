@@ -9,29 +9,32 @@ namespace Models
 {
     [DataContract]
     public class Student
-{
+    {
+        private int id;
+        private string brojIndexa;
+        private string ime;
+        private string prezime;
+        private string smer;
+
         [DataMember]
-        public int Id { get; set; }
+        public int Id { get => id; set => id = value; }
         [DataMember]
-        public string BrojIndexa { get; set; }
+        public string BrojIndexa { get => brojIndexa; set => brojIndexa = value; }
         [DataMember]
-        public string Ime { get; set; }
+        public string Ime { get => ime; set => ime = value; }
         [DataMember]
-        public string Prezime { get; set; }
+        public string Prezime { get => prezime; set => prezime = value; }
         [DataMember]
-        public string Smer { get; set; }
-        /*[DataMember]
-        public ICollection<Ispit> Ispiti { get; set; }*/
+        public string Smer { get => smer; set => smer = value; }
+
 
         public Student(int id,string brojIndexa,string ime,string prezime,string smer)
-/*            ,ICollection<Ispit> ispiti)*/
         {
             this.Id = id;
             this.BrojIndexa = brojIndexa;
             this.Ime = ime;
             this.Prezime = prezime;
             this.Smer = smer;
-            /*this.Ispiti = ispiti;*/
         }
         public Student() { }
 

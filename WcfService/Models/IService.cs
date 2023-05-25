@@ -10,7 +10,6 @@ namespace Models
     [ServiceContract]
     public interface IService
     {
-   
         [OperationContract]
         void insertStudent(Models.Student student);
 

@@ -11,25 +11,26 @@ namespace Models
     [DataContract]
     public class Predmet
     {
+        private int id;
+        private string naziv;
+        private string katedra;
+        private string profesor;
+
         [DataMember]
-        public int Id { get; set; }
+        public int Id { get => id; set => id = value; }
         [DataMember]
-        public string Naziv { get; set; }
+        public string Naziv { get => naziv; set => naziv = value; }
         [DataMember]
-        public string Katedra { get; set; }
+        public string Katedra { get => katedra; set => katedra = value; }
         [DataMember]
-        public string Profesor { get; set; }/*
-        [DataMember]
-        public ICollection<Ispit> Ispiti { get; set; }*/
+        public string Profesor { get => profesor; set => profesor = value; }
 
         public Predmet(int id,string naziv,string katedra,string profesor)
-           /* , ICollection<Ispit> ispiti)*/
         {
             this.Id = id;
             this.Naziv = naziv;
             this.Katedra = katedra;
             this.Profesor = profesor;
-            /*this.Ispiti = ispiti;*/
         }
 
         public Predmet() { }

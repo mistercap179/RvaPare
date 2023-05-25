@@ -14,6 +14,7 @@ namespace WpfApp.ViewModels
 {
     public class RegistrationExamViewModel : INotifyPropertyChanged
     {
+        public ObservableCollection<Prijava> ListaIspita { get; set; }
         public ObservableCollection<Ispit> Ispiti { get; set; }
         public ObservableCollection<Predmet> Predmeti { get; set; }
         public ObservableCollection<Predmet> FiltriraniPredmeti { get; set; }
@@ -120,21 +121,32 @@ namespace WpfApp.ViewModels
 
             Ispiti = new ObservableCollection<Ispit>();
             service.getIspitiByIdStudent(this.student.Id).ForEach(item => Ispiti.Add(item));
+            ListaIspita = new ObservableCollection<Prijava>();
+
+            Ispiti.ToList().ForEach(item =>
+            {
+                Prijava prijava = new Prijava();
+                prijava = conversion(item);
+                ListaIspita.Add(prijava);
+            });
 
             Predmeti = new ObservableCollection<Predmet>();
             this.service.getPredmeti().ToList().ForEach(item => Predmeti.Add(item));
 
-            FiltriraniPredmeti = new ObservableCollection<Predmet>(Predmeti.Where(predmet => !Ispiti.Any(ispit => ispit.IdPredmet == predmet.Id)));
-            if(FiltriraniPredmeti == null)
+
+            FiltriraniPredmeti = new ObservableCollection<Predmet>(Predmeti.Where(predmet => !Ispiti.Any(ispit => ispit.Polozen == 1 && ispit.IdPredmet == predmet.Id)));
+            AddCommand = new RelayCommand(AddIspit);
+            if (FiltriraniPredmeti.Count == 0)
             {
                 MessageBox.Show("Prijavili ste ispite za postojece predmete!");
             }
-            AddCommand = new RelayCommand(AddIspit);
+
         }
 
 
         public void AddIspit()
         {
+            Random random = new Random();
 
             if (!IsFormValid())
             {
@@ -142,20 +154,22 @@ namespace WpfApp.ViewModels
             }
             else
             {
+                
                 var ispit = new Ispit
                 {
                     IdStudent = student.Id,
                     Vreme = Vreme,
                     IdPredmet = SelectedItem.Id,
                     Student = student,
-                    Predmet = SelectedItem
+                    Predmet = SelectedItem,
+                    Polozen = (short)random.Next(2)
 
                 };
 
                 service.insertIspit(ispit);
                 Ime = string.Empty;
                 Prezime = string.Empty;
-                Profesor = string.Empty; ;
+                Profesor = string.Empty; 
 
 
                 Window window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
@@ -176,6 +190,21 @@ namespace WpfApp.ViewModels
 
 
             return isValid;
+        }
+
+
+        private Prijava conversion(Ispit ispit)
+        {
+            if(ispit.Polozen == 1)
+            {
+                return new Prijava(ispit.Id, ispit.Vreme, ispit.IdPredmet, ispit.IdStudent, ispit.Student, ispit.Predmet,"DA");
+
+            }
+            else
+            {
+                return new Prijava(ispit.Id, ispit.Vreme, ispit.IdPredmet, ispit.IdStudent, ispit.Student, ispit.Predmet, "NE");
+            }
+            
         }
 
 

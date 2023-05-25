@@ -8,6 +8,7 @@
           <ScalarProperty Name="vreme" ColumnName="vreme" />
           <ScalarProperty Name="idPredmet" ColumnName="idPredmet" />
           <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="polozen" ColumnName="polozen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

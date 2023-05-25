@@ -57,6 +57,7 @@ namespace WpfApp.ViewModels
         public ICommand SearchCommand { get; set; }
         public ICommand CancelCommand { get; set; }
         public ICommand RegistrationCommand { get; set; }
+        public ICommand RefreshCommand { get; set; }
 
         public StudentViewModel(IService service)
         {
@@ -67,8 +68,11 @@ namespace WpfApp.ViewModels
             SearchCommand = new RelayCommand(SearchStudent);
             CancelCommand = new RelayCommand(CancelSearch);
             RegistrationCommand = new RelayCommand<object>(RegistrationExam);
-            Students = new ObservableCollection<Models.Student>(service.getStudenti());
-            ListBox = new ObservableCollection<string>{"ime", "prezime", "index", "smer"};
+            RefreshCommand = new RelayCommand(Refresh);
+            Students = new ObservableCollection<Models.Student>();
+            ListBox = new ObservableCollection<string> { "ime", "prezime", "index", "smer" };
+            initialization();
+
         }
 
         private void AddStudent()
@@ -111,7 +115,6 @@ namespace WpfApp.ViewModels
             }
 
         }
-
 
 
         public void SearchStudent()
@@ -170,12 +173,7 @@ namespace WpfApp.ViewModels
             }
         }
 
-        private void RefreshTableIspiti(object sender, EventArgs e)
-        {
-            
-            
-        }
-
+        private void RefreshTableIspiti(object sender, EventArgs e){}
 
         private void SecondWindowClosed(object sender, EventArgs e)
         {
@@ -191,6 +189,37 @@ namespace WpfApp.ViewModels
         }
 
 
+
+        public void Refresh()
+        {
+            Students.Clear();
+            try
+            {
+                this.service.getStudenti().ForEach(item => Students.Add(item));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+
+        public void initialization()
+        {
+            var studentList = this.service.getStudenti();
+
+            if (studentList.Count == 0)
+            {
+                // Set default value for students
+                this.service.insertStudent(new Models.Student { Ime = "Marko", Prezime = "Markovic", Smer = "PSI", BrojIndexa = "pr22/2222" });
+                Students.Add(new Models.Student { Ime = "Marko", Prezime = "Markovic", Smer = "PSI", BrojIndexa = "pr22/2222" });
+            }
+            else
+            {
+                studentList.ForEach(item => Students.Add(item));
+            }
+        }
 
     }
 }

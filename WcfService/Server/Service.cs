@@ -18,8 +18,7 @@ namespace Server
 
         public Service()
         {
-            IUnityContainer container = ServerContainer.Container; 
-            this._dbCrud = container.Resolve<IDBCrud>();
+            this._dbCrud = new DBCrud.DBCrud();
         }
 
         #region dodavanje
@@ -54,6 +53,7 @@ namespace Server
 
             _dbCrud.insertIspit(new Ispit()
             {
+                polozen = ispit.Polozen,
                 vreme = ispit.Vreme,
                 idPredmet = ispit.IdPredmet,
                 idStudent = ispit.IdStudent

@@ -22,6 +22,7 @@ namespace WpfApp
             ChannelFactory<IService> channel = new ChannelFactory<IService>(clientBinding, address);
 
             IService service = channel.CreateChannel();
+            
             return service;
         }
     }

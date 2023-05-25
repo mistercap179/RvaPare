@@ -20,11 +20,8 @@ namespace Server.Conversion
         
         public Models.Ispit conversionIspit(Ispit ispit)
         {
-            return new Models.Ispit(ispit.id, ispit.vreme, ispit.idPredmet, ispit.idStudent, conversionStudent(ispit.Student), conversionPredmet(ispit.Predmet));
+            return new Models.Ispit(ispit.id, ispit.vreme, ispit.idPredmet, ispit.idStudent, conversionStudent(ispit.Student), conversionPredmet(ispit.Predmet),ispit.polozen);
         }
-
-
-
 
     }
 }

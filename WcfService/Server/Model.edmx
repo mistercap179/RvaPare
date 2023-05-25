@@ -13,6 +13,7 @@
           <Property Name="vreme" Type="date" Nullable="false" />
           <Property Name="idPredmet" Type="int" Nullable="false" />
           <Property Name="idStudent" Type="int" Nullable="false" />
+          <Property Name="polozen" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="Predmet">
           <Key>
@@ -87,6 +88,7 @@
           <Property Name="vreme" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="idPredmet" Type="Int32" Nullable="false" />
           <Property Name="idStudent" Type="Int32" Nullable="false" />
+          <Property Name="polozen" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Predmet" Relationship="Self.FK_Ispit_Predmet" FromRole="Ispit" ToRole="Predmet" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Ispit_Student" FromRole="Ispit" ToRole="Student" />
         </EntityType>
@@ -165,6 +167,7 @@
                 <ScalarProperty Name="vreme" ColumnName="vreme" />
                 <ScalarProperty Name="idPredmet" ColumnName="idPredmet" />
                 <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+                <ScalarProperty Name="polozen" ColumnName="polozen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

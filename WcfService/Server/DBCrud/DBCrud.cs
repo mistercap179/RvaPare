@@ -9,7 +9,7 @@ namespace Server.DBCrud
 {
     public class DBCrud : IDBCrud
     {
-        Conversion.Conversion conversion = new Conversion.Conversion();
+        Conversion.IConversion conversion = new Conversion.Conversion();
 
         #region upis
         public void insertPredmet(Predmet predmet)

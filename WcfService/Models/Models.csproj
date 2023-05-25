@@ -46,6 +46,7 @@
     <Compile Include="IService.cs" />
     <Compile Include="Ispit.cs" />
     <Compile Include="Predmet.cs" />
+    <Compile Include="Prijava.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

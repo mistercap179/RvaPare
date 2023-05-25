@@ -14,8 +14,6 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            ServerContainer.ConfigureContainer();       //Depedency injection
-
             var ServerPort = 12341;
             var UriServer = $"net.tcp://localhost:{ServerPort}/Service";
 

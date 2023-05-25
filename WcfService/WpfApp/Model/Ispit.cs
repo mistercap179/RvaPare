@@ -13,5 +13,6 @@ namespace WpfApp.Model
         public string Predmet { get; set; }
         public string Profesor { get; set; }
         public DateTime Vreme { get; set; }
+        public bool Polozen { get; set; }
     }
 }
